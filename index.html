@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Alisha 💖</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #text {
+      margin-top: 20%;
+      font-size: 26px;
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      background: pink;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="text"></div>
+<button onclick="showFinal()">Click karo 💖</button>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+const lines = [
+  "Hey Alisha 😊",
+  "Pata nahi kab shuru hua...",
+  "Par tum mere liye kaafi special ban gayi ho 💖",
+  "Tumhari ek smile mera pura din bana deti hai 😄",
+  "Aur shayad... mujhe tum pasand ho 🫣"
+];
+
+let i = 0;
+let j = 0;
+
+function typeEffect() {
+  if (i < lines.length) {
+    let currentLine = lines[i];
+
+    document.getElementById("text").innerHTML =
+      currentLine.substring(0, j);
+
+    j++;
+
+    if (j > currentLine.length) {
+      i++;
+      j = 0;
+      setTimeout(typeEffect, 1200);
+    } else {
+      setTimeout(typeEffect, 50);
+    }
+  } else {
+    document.querySelector("button").style.display = "inline-block";
+  }
+}
+
+function showFinal() {
+  document.getElementById("text").innerHTML =
+    "Toh Alisha... kya main tumhari smile ki wajah ban sakta hoon? ❤️";
+}
+
+// hearts
+for (let k = 0; k < 20; k++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.innerHTML = "❤️";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
